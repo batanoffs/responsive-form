@@ -3,6 +3,11 @@ import axios from "axios";
 
 import styles from "./table.module.css";
 
+//TODO implement responsive design to the table and create better design for the table
+//TODO Loading State: Display a loading state while fetching data from the API.
+//TODO Error Handling: Implement error handling for failed API requests.
+//TODO add services folder and transfer logic there
+//TODO check if folders constants and utils are needed to extract logic
 export const Table = () => {
     const [people, setPeople] = useState([]);
     const [pagination, setPagination] = useState({
@@ -45,6 +50,9 @@ export const Table = () => {
     };
 
     return (
+        // TODO create table component with props
+        // TODO decide on how to implement loading state
+        // TODO maybe update pagination with numbers instead of prev next
         <div className={styles.container}>
             <table>
                 <thead>

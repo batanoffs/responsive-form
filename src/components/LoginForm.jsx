@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import data from "../users.json";
 import styles from "./login.module.css";
 
+//TODO implement responsive design to Login if needed
 export const LoginForm = () => {
     const [formData, setFormData] = useState({
         user: "",
@@ -16,7 +17,7 @@ export const LoginForm = () => {
         const formElement = e.target;
         const form = new FormData(formElement);
 
-        if (!form) throw new Error("FormData is null");
+        if (!form) throw new Error("Form data is empty");
 
         const formEntries = Object.fromEntries(form);
 
@@ -38,7 +39,7 @@ export const LoginForm = () => {
     };
 
     const handleEmptyFields = () => {
-        const button = document.querySelector("button");
+        const button = document.querySelector(".login-button");
 
         if (formData.user !== "" && formData.password !== "") {
             button.disabled = false;
@@ -50,6 +51,8 @@ export const LoginForm = () => {
     const onChangeHandler = (e) => {
         const target = e.currentTarget.name;
         const value = e.currentTarget.value;
+
+        if (!target) throw new Error("target is null");
 
         setFormData((prev) => {
             if (target === "user") {
@@ -63,6 +66,7 @@ export const LoginForm = () => {
     };
 
     return (
+        //TODO improve design
         <div className={styles.container}>
             <h1>Login</h1>
             <form onSubmit={submitHandler}>
@@ -85,7 +89,7 @@ export const LoginForm = () => {
                         onChange={onChangeHandler}
                     />
                 </div>
-                <button disabled type="submit">
+                <button className="login-button" disabled type="submit">
                     Login
                 </button>
             </form>
