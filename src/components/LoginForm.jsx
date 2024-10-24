@@ -5,11 +5,11 @@ import data from "../users.json";
 import styles from "./login.module.css";
 
 export const LoginForm = () => {
-    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         user: "",
         password: "",
     });
+    const navigate = useNavigate();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ export const LoginForm = () => {
     return (
         <div className={styles.container}>
             <h1>Login</h1>
-            <form onSubmit={submitHandler} onBlur={handleEmptyFields}>
+            <form onSubmit={submitHandler}>
                 <div>
                     <label htmlFor="user"> User </label>
                     <input
