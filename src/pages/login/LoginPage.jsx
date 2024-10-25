@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import data from "../users.json";
+import { CustomForm, CustomInput } from "../../components/index";
+import data from "../../users.json";
+
 import styles from "./login.module.css";
 
 //TODO implement responsive design to Login if needed
-export const LoginForm = () => {
+export const LoginPage = () => {
     const [formData, setFormData] = useState({
         user: "",
         password: "",
@@ -69,30 +71,21 @@ export const LoginForm = () => {
         //TODO improve design
         <div className={styles.container}>
             <h1>Login</h1>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label htmlFor="user"> User </label>
-                    <input
-                        id="user"
-                        name="user"
-                        value={formData.user}
-                        onChange={onChangeHandler}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password"> Password </label>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={onChangeHandler}
-                    />
-                </div>
-                <button className="login-button" disabled type="submit">
-                    Login
-                </button>
-            </form>
+            <CustomForm submitHandler={submitHandler}>
+                <CustomInput
+                    id="user"
+                    name="user"
+                    value={formData.user}
+                    onChange={onChangeHandler}
+                />
+                <CustomInput
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={formData.password}
+                    onChange={onChangeHandler}
+                />
+            </CustomForm>
         </div>
     );
 };
