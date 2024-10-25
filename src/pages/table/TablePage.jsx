@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 
 import { useData } from "../../hooks/useData";
-import { Table } from "../../components/tables/Table";
+import { Table, Button } from "../../components/index";
 import { API, tableTitles } from "../../constants/index";
-import { Button } from "../../components/buttons/Button";
 
 import styles from "./table.module.css";
 
