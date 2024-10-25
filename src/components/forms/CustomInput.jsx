@@ -1,5 +1,7 @@
 import { formatString } from "../../utils/index";
 
+import styles from "./forms.module.css";
+
 export const CustomInput = ({
     type,
     placeholder,
@@ -22,7 +24,7 @@ export const CustomInput = ({
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <label htmlFor={name}>
                 {formatString.firstCharUpperCase(name)}
             </label>

@@ -1,8 +1,10 @@
 import { TableRow } from "./TableRow";
 
+import styles from "./table.module.css";
+
 export const Table = ({ tableTitlesArr, dataArr }) => {
     return (
-        <table>
+        <table className={styles.table}>
             <thead>
                 <tr>
                     {tableTitlesArr.map((title, index) => (

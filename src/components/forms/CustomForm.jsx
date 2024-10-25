@@ -1,3 +1,9 @@
+import styles from "./forms.module.css";
+
 export const CustomForm = ({ children, submitHandler }) => {
-    return <form onSubmit={submitHandler}>{children}</form>;
+    return (
+        <form className={styles.form} onSubmit={submitHandler}>
+            {children}
+        </form>
+    );
 };
