@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useData } from "../../hooks/useData";
 import { Table } from "../../components/tables/Table";
 import { API, tableTitles } from "../../constants/index";
+import { Button } from "../../components/buttons/Button";
 
 import styles from "./table.module.css";
 
@@ -27,18 +28,16 @@ export const TablePage = () => {
         <div className={styles.container}>
             <Table tableTitlesArr={tableTitles} dataArr={data} />
             <div className={styles.pagination}>
-                <button
+                <Button
                     onClick={() => getPagination(pagination.prev)}
                     disabled={!pagination.prev}
-                >
-                    Previous
-                </button>
-                <button
+                    value={"Previous"}
+                />
+                <Button
                     onClick={() => getPagination(pagination.next)}
                     disabled={!pagination.next}
-                >
-                    Next
-                </button>
+                    value={"Next"}
+                />
             </div>
         </div>
     );
