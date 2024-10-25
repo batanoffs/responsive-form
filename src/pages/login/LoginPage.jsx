@@ -17,11 +17,13 @@ export const LoginPage = () => {
                 <CustomInput
                     id="user"
                     name="user"
+                    placeholder={"username..."}
                     value={values.user}
                     onChange={changeHandler}
                 />
                 <CustomInput
                     id="password"
+                    placeholder={"password..."}
                     name="password"
                     type="password"
                     value={values.password}
