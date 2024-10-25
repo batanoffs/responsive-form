@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 
-import { API } from "../../constants/index";
+import { useData } from "../../hooks/useData";
+import { Table } from "../../components/tables/Table";
+import { API, tableTitles } from "../../constants/index";
 
 import styles from "./table.module.css";
 
@@ -10,85 +11,30 @@ import styles from "./table.module.css";
 //TODO Error Handling: Implement error handling for failed API requests.
 //TODO add services folder and transfer logic there
 //TODO check if folders constants and utils are needed to extract logic
+//TODO decide on how to implement loading state
 
 export const TablePage = () => {
-    const [people, setPeople] = useState([]);
-    const [pagination, setPagination] = useState({
+    const { data, pagination, fetchData, getPagination } = useData([], {
         next: "",
         prev: null,
     });
 
-    //useCallback will return a memoized version of the callback that only changes if one of the inputs has changed.
-    const fetchStarWarsPeople = useCallback(
-        async (url) => {
-            try {
-                const response = await axios.get(url);
-                const filterProps = response.data.results.map((person) => ({
-                    name: person.name,
-                    mass: person.mass,
-                    height: person.height,
-                    hair_color: person.hair_color,
-                    skin_color: person.skin_color,
-                }));
-
-                setPagination({
-                    next: response.data.next,
-                    prev: response.data.previous,
-                });
-                setPeople(filterProps);
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        [setPeople]
-    );
-
     useEffect(() => {
-        fetchStarWarsPeople(API.people);
+        fetchData(API.people);
     }, []);
 
-    const handlePagination = async (url) => {
-        if (url) {
-            await fetchStarWarsPeople(url);
-        }
-    };
-
     return (
-        // TODO create table component with props
-        // TODO decide on how to implement loading state
-        // TODO maybe update pagination with numbers instead of prev next
         <div className={styles.container}>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Mass</th>
-                        <th>Height</th>
-                        <th>Hair Color</th>
-                        <th>Skin Color</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {people.map((person, index) => (
-                        <tr key={index}>
-                            <td>{person.name}</td>
-                            <td>{person.mass}</td>
-                            <td>{person.height}</td>
-                            <td>{person.hair_color}</td>
-                            <td>{person.skin_color}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Table tableTitlesArr={tableTitles} dataArr={data} />
             <div className={styles.pagination}>
                 <button
-                    onClick={() => handlePagination(pagination.prev)}
+                    onClick={() => getPagination(pagination.prev)}
                     disabled={!pagination.prev}
                 >
                     Previous
                 </button>
                 <button
-                    onClick={() => handlePagination(pagination.next)}
+                    onClick={() => getPagination(pagination.next)}
                     disabled={!pagination.next}
                 >
                     Next
