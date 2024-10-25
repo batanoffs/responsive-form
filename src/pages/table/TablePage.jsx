@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
+import { API } from "../../constants/index";
+
 import styles from "./table.module.css";
 
 //TODO implement responsive design to the table and create better design for the table
@@ -8,13 +10,15 @@ import styles from "./table.module.css";
 //TODO Error Handling: Implement error handling for failed API requests.
 //TODO add services folder and transfer logic there
 //TODO check if folders constants and utils are needed to extract logic
-export const Table = () => {
+
+export const TablePage = () => {
     const [people, setPeople] = useState([]);
     const [pagination, setPagination] = useState({
         next: "",
         prev: null,
     });
 
+    //useCallback will return a memoized version of the callback that only changes if one of the inputs has changed.
     const fetchStarWarsPeople = useCallback(
         async (url) => {
             try {
@@ -40,7 +44,7 @@ export const Table = () => {
     );
 
     useEffect(() => {
-        fetchStarWarsPeople("https://swapi.dev/api/people");
+        fetchStarWarsPeople(API.people);
     }, []);
 
     const handlePagination = async (url) => {
