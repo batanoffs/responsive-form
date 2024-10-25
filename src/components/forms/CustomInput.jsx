@@ -9,6 +9,7 @@ export const CustomInput = ({
     onChange,
     className,
 }) => {
+    // Added a check only for type submit because others are not needed for this assignment
     if (type === "submit") {
         return (
             <input
