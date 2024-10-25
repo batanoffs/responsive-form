@@ -1,6 +1,6 @@
-import { LoginForm } from "./components/LoginForm";
 import { Route, Routes } from "react-router-dom";
-import { Table } from "./components/Table";
+
+import { LoginPage, TablePage } from "./pages/index";
 
 import "./App.css";
 
@@ -9,11 +9,12 @@ import "./App.css";
 //TODO update readme with the nessecery information
 //TODO maybe add typescript for type checking
 //TODO improve css and overall design of the application
+
 const App = () => {
     return (
         <Routes>
-            <Route path="/" Component={LoginForm} />
-            <Route path="/table" Component={Table} />
+            <Route path="/" Component={LoginPage} />
+            <Route path="/table" Component={TablePage} />
         </Routes>
     );
 };
