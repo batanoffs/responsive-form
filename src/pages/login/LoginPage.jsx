@@ -85,6 +85,12 @@ export const LoginPage = () => {
                     value={formData.password}
                     onChange={onChangeHandler}
                 />
+                <CustomInput
+                    className="login-button"
+                    disabled={true}
+                    type="submit"
+                    value="Login"
+                />
             </CustomForm>
         </div>
     );
