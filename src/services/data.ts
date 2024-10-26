@@ -20,6 +20,7 @@ const getPeople = async (url: string) => {
 		return { filterProps, pagination };
 	} catch (error) {
 		console.error(error);
+		return { filterProps: [], pagination: { next: null, prev: null } }; // return a default value
 	}
 };
 
