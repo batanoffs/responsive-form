@@ -1,7 +1,7 @@
-const baseUrl = "https://swapi.dev/api/";
+const baseUrl = "https://swapi.dev/api";
 
 const endpoints = {
-    people: baseUrl + "people",
+    people: baseUrl + "/people",
 };
 
 export const API = {
