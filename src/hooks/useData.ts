@@ -26,6 +26,7 @@ export const useData = (initialStateValues: [], initialStatePagination: Paginati
 
 	const getPagination = async (url: string) => {
 		if (url !== null) {
+			setData([]);
 			await fetchData(url);
 		}
 	};

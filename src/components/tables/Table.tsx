@@ -12,7 +12,27 @@ type TableProps = {
 		skin_color: string;
 	}[];
 };
+
+interface EmptyRowProps {
+	count: number;
+}
+
+const EmptyRow = ({ count }: EmptyRowProps) =>
+	count > 0 && (
+		<>
+			{Array.from({ length: count }, (_, index) => (
+				<tr key={index} className={styles.loader}>
+					<td colSpan={5} />
+				</tr>
+			))}
+		</>
+	);
+
 export const Table = ({ tableTitlesArr, dataArr }: TableProps) => {
+	const isLoading = dataArr.length === 0;
+	const TableData = () => dataArr.map((data, index) => <TableRow key={index} props={data} />);
+	const state = isLoading ? <EmptyRow count={10} /> : <TableData />;
+
 	return (
 		<table className={styles.table}>
 			<thead>
@@ -22,11 +42,7 @@ export const Table = ({ tableTitlesArr, dataArr }: TableProps) => {
 					))}
 				</tr>
 			</thead>
-			<tbody>
-				{dataArr.map((data, index) => (
-					<TableRow key={index} props={data} />
-				))}
-			</tbody>
+			<tbody>{state}</tbody>
 		</table>
 	);
 };
