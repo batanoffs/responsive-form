@@ -4,9 +4,6 @@ import { LoginPage, TablePage } from './pages/index';
 
 import './App.css';
 
-//TODO update readme with the nessecery information
-//TODO improve css and overall design of the application
-
 const App = () => {
 	return (
 		<Routes>

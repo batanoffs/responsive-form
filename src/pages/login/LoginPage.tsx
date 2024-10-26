@@ -10,7 +10,6 @@ export const LoginPage = () => {
 	});
 
 	return (
-		//TODO improve design
 		<div className={styles.container}>
 			<h1>Login</h1>
 			<CustomForm submitHandler={onSubmitHandler}>

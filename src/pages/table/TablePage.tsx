@@ -6,11 +6,6 @@ import { API, tableTitles } from '../../constants/index';
 
 import styles from './table.module.css';
 
-//TODO implement responsive design to the table and create better design for the table
-//TODO Loading State: Display a loading state while fetching data from the API.
-//TODO Error Handling: Implement error handling for failed API requests.
-//TODO decide on how to implement loading state
-
 export const TablePage = () => {
 	const { data, pagination, fetchData, getPagination } = useData([], {
 		next: '',
