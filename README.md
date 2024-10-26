@@ -2,7 +2,7 @@
 
 This project contains a simple login form that after successful login redirects to the table page. The table fetches data from StarWars API and displays.
 
-Tools: Build with vite, the application uses React and TypeScript. Axios is utilized to fetch data from the API.
+Tools: Build with vite, the application uses React, React-router and TypeScript. Axios is utilized to fetch data from the API.
 
 ## Hooks 
 
